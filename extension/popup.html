@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jev Email Labels</title></head>
+<body>
+<header class="popup-header">
+  <label class="toggle" for="enabled"><span>Classify visible emails</span><span class="switch"><input id="enabled" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span></label>
+  <p id="status" role="status" aria-live="polite">Connecting…</p>
+</header>
+<main>
+  <div id="reload-notice" hidden><p>Reload Gmail to apply the updated extension.</p><button id="reload-gmail">Reload Gmail</button></div>
+  <section aria-labelledby="choices-title" class="choices-section">
+    <h1 id="choices-title">Choices</h1>
+    <fieldset id="choices-editor" disabled>
+      <div class="choice choice-important"><div class="choice-heading"><label for="description-important"><span class="choice-dot" aria-hidden="true"></span>Important</label><label class="switch"><input id="visible-important" type="checkbox" role="switch" checked aria-label="Show Important badges"><span class="switch-track" aria-hidden="true"></span></label></div><textarea id="description-important" rows="3" required maxlength="2000" aria-label="Important description" placeholder="Connect to load description" spellcheck="true"></textarea></div>
+      <div class="choice choice-routine"><div class="choice-heading"><label for="description-routine"><span class="choice-dot" aria-hidden="true"></span>Routine</label><label class="switch"><input id="visible-routine" type="checkbox" role="switch" checked aria-label="Show Routine badges"><span class="switch-track" aria-hidden="true"></span></label></div><textarea id="description-routine" rows="3" required maxlength="2000" aria-label="Routine description" placeholder="Connect to load description" spellcheck="true"></textarea></div>
+      <div class="choice choice-spam"><div class="choice-heading"><label for="description-spam"><span class="choice-dot" aria-hidden="true"></span>Spam</label><label class="switch"><input id="visible-spam" type="checkbox" role="switch" checked aria-label="Show Spam badges"><span class="switch-track" aria-hidden="true"></span></label></div><textarea id="description-spam" rows="3" required maxlength="2000" aria-label="Spam description" placeholder="Connect to load description" spellcheck="true"></textarea></div>
+      <div id="custom-labels"></div>
+      <button id="add-label" class="text-button" type="button">Add label</button>
+    </fieldset>
+    <p class="display-states"><span>Retry <span class="muted">· error</span></span></p>
+  </section>
+  <details><summary>Personal preferences</summary><div class="detail-content">
+    <label for="priorities">Important to me</label><textarea id="priorities" rows="3" maxlength="4000" placeholder="People, topics, and deadlines that matter"></textarea>
+    <div class="field-heading"><span>Sender rules</span><button id="add-rule" class="text-button">Add rule</button></div><div id="rules"></div>
+    <label for="batch">Request grouping</label><select id="batch"><option value="1">Individual emails</option><option value="4">4 emails · experimental</option><option value="8">8 emails · experimental</option></select>
+  </div></details>
+  <details id="pairing"><summary>Connection</summary><div class="detail-content">
+    <label for="extension-id">Extension ID</label><input id="extension-id" readonly>
+    <label for="token">Pairing token</label><div class="pair-row"><input id="token" type="password" autocomplete="off"><button id="pair">Pair</button></div>
+    <p class="muted privacy-note">Selected email text is sent to Jev through your local service.</p>
+    <button id="clear" class="text-button">Clear cached results</button>
+  </div></details>
+  <details><summary>Activity</summary><div class="detail-content">
+    <div class="activity-heading"><span>Recent requests</span><button id="refresh" class="text-button">Refresh</button></div><div id="activity" aria-live="polite"><p class="muted">Refresh to load requests.</p></div>
+  </div></details>
+</main>
+<footer><span id="save-state" aria-live="polite"></span><button id="save" class="primary" disabled>Save changes</button></footer>
+<script type="module" src="/src/popup.ts"></script>
+</body></html>
