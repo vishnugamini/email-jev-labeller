@@ -1,0 +1,16 @@
+.venv/
+.cache/
+.local/
+.env
+__pycache__/
+.pytest_cache/
+node_modules/
+extension/dist/
+*.log
+*.egg-info/
+release/
+.DS_Store
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-*
